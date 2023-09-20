@@ -11,6 +11,11 @@
             "Ascetik\\Fiberloop\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Ascetik\\Fiberloop\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "ascetik",
