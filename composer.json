@@ -1,0 +1,21 @@
+{
+    "name": "ascetik/fiberloop",
+    "description": "Task loop using PHP Fiber",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^10.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ascetik\\Fiberloop\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ascetik",
+            "email": "ascetik@free.fr"
+        }
+    ],
+    "require": {}
+}
