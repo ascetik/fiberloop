@@ -15,7 +15,10 @@ namespace Ascetik\Fiberloop;
 
 use Ascetik\Fiberloop\Containers\TaskReportRegistry;
 use Ascetik\Fiberloop\DTOs\FiberTask;
-use Ascetik\Fiberloop\Handlers\TaskErrorHandler;
+use Ascetik\Fiberloop\Enums\TaskExecutionState;
+use Ascetik\Fiberloop\Errors\Exceptions\TaskExecutionException;
+use Ascetik\Fiberloop\Errors\TaskErrorHandler;
+use Ascetik\Fiberloop\ValueObjects\TaskReport;
 use Ascetik\Fiberloop\ValueObjects\TaskResult;
 use Ascetik\Krono\Krono;
 use Ascetik\Storage\Box;
@@ -136,7 +139,7 @@ class FiberLoop
 
         );
 
-        return $result ? $result->counter->ellapsedTime(3) : null;
+        return $result ? $result->counter->elapsedTime(3) : null;
     }
 
     public function getEllapsedTimes(): array
@@ -144,7 +147,7 @@ class FiberLoop
         $output = [];
         $this->results->each(
             function (TaskResult $result) use (&$output) {
-                $output[$result->id] = $result->counter->ellapsedTime(3);
+                $output[$result->id] = $result->counter->elapsedTime(3);
             }
         );
         return $output;
@@ -152,7 +155,7 @@ class FiberLoop
 
     public function totalTime(): string
     {
-        return $this->counter->ellapsedTime(6);
+        return (string) $this->counter->value()->detail();
     }
 
     public function getReports(string|TaskExecutionState $withState = null): TaskReportRegistry

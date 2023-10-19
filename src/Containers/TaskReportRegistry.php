@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Ascetik\Fiberloop\Containers;
 
-use Ascetik\FiberLoop\DTO\TaskReport;
+use Ascetik\Fiberloop\ValueObjects\TaskReport;
 use Ascetik\Storage\Box;
 
 /**

@@ -19,6 +19,7 @@ use Ascetik\Fiberloop\Enums\TaskOnExcess;
 use Ascetik\Fiberloop\Enums\TaskRunState;
 use Ascetik\Fiberloop\Errors\Strategies\CancelOnErrorStrategy;
 use Ascetik\Fiberloop\Errors\Strategies\ThrowOnErrorStrategy;
+use Ascetik\Fiberloop\FiberLoop;
 use Ascetik\Fiberloop\Types\AbstractErrorHandlingStrategy;
 use Ascetik\Krono\Krono;
 use Fiber;
@@ -184,7 +185,7 @@ final class FiberTask
         return $this->counter;
     }
 
-    public function getErrorStrategy(): ErrorHandlingStrategy
+    public function getErrorStrategy(): AbstractErrorHandlingStrategy
     {
         return $this->taskHandlingStrategy;
     }
