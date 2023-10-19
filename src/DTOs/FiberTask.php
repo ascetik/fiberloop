@@ -17,6 +17,8 @@ namespace Ascetik\Fiberloop\DTOs;
 use Ascetik\Fiberloop\Enums\TaskExecutionState;
 use Ascetik\Fiberloop\Enums\TaskOnExcess;
 use Ascetik\Fiberloop\Enums\TaskRunState;
+use Ascetik\Fiberloop\Errors\Strategies\CancelOnErrorStrategy;
+use Ascetik\Fiberloop\Errors\Strategies\ThrowOnErrorStrategy;
 use Ascetik\Fiberloop\Types\AbstractErrorHandlingStrategy;
 use Ascetik\Krono\Krono;
 use Fiber;
@@ -142,7 +144,7 @@ final class FiberTask
         return $this;
     }
 
-    public function useOnError(ErrorHandlingStrategy $strategy)
+    public function useOnError(AbstractErrorHandlingStrategy $strategy)
     {
         $this->taskHandlingStrategy = $strategy;
         return $this;
