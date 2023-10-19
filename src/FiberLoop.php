@@ -16,6 +16,7 @@ namespace Ascetik\Fiberloop;
 use Ascetik\Fiberloop\Containers\TaskReportRegistry;
 use Ascetik\Fiberloop\DTOs\FiberTask;
 use Ascetik\Fiberloop\Handlers\TaskErrorHandler;
+use Ascetik\Fiberloop\ValueObjects\TaskResult;
 use Ascetik\Krono\Krono;
 use Ascetik\Storage\Box;
 use Throwable;

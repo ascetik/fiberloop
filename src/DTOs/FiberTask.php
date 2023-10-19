@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Ascetik\Fiberloop\DTOs;
 
+use Ascetik\Krono\Krono;
 use Fiber;
 
 /**
@@ -94,9 +95,9 @@ final class FiberTask
     /**
      * Calculate task execution ellapsed time
      *
-     * @var TimeCounter
+     * @var Krono
      */
-    private TimeCounter $counter;
+    private Krono $counter;
 
     /**
      * @param  array|callable          $func       callable to execute
@@ -171,7 +172,7 @@ final class FiberTask
         return $this->executionState;
     }
 
-    public function getCounter(): TimeCounter
+    public function getCounter(): Krono
     {
         return $this->counter;
     }
