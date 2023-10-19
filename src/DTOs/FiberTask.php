@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Ascetik\Fiberloop\DTOs;
 
+use Ascetik\Fiberloop\Enums\TaskExecutionState;
 use Ascetik\Fiberloop\Enums\TaskOnExcess;
 use Ascetik\Fiberloop\Enums\TaskRunState;
 use Ascetik\Krono\Krono;
