@@ -142,7 +142,7 @@ class FiberLoop
         return $result ? (string) $result->counter->value()->adjust() : null;
     }
 
-    public function getEllapsedTimes(): array
+    public function getElapsedTimes(): array
     {
         $output = [];
         $this->results->each(

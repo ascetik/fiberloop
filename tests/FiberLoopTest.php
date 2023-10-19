@@ -195,7 +195,7 @@ class FiberLoopTest extends TestCase
         $this->loop->run();
         $sleeping = $this->loop->getElapsedTimeOf('sleeping');
         $suspended = $this->loop->getElapsedTimeOf('suspended') . PHP_EOL;
-        $totalTasksTime = $this->loop->getEllapsedTimes();
+        $totalTasksTime = $this->loop->getElapsedTimes();
         $total = $this->loop->totalTime();
         $this->assertSame('1s', $sleeping);
         $this->assertTrue($suspended < 500);
@@ -205,7 +205,7 @@ class FiberLoopTest extends TestCase
 
         // $this->assertTrue($total > 0);
         $this->assertTrue(floatval($total) >= floatval($sleeping));
-        $this->assertIsArray($this->loop->getEllapsedTimes());
+        $this->assertIsArray($this->loop->getElapsedTimes());
         $this->assertCount(2, $totalTasksTime);
     }
     public function testExceptionThrownOnExecutionError()
