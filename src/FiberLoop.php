@@ -131,7 +131,7 @@ class FiberLoop
         return null;
     }
 
-    public function getEllapsedTimeOf(string $id): ?string
+    public function getElapsedTimeOf(string $id): ?string
     {
         /** @var ?TaskResult */
         $result = $this->results->find(
@@ -139,10 +139,10 @@ class FiberLoop
 
         );
 
-        return $result ? $result->counter->elapsedTime(3) : null;
+        return $result ? (string) $result->counter->value()->adjust() : null;
     }
 
-    public function getEllapsedTimes(): array
+    public function getElapsedTimes(): array
     {
         $output = [];
         $this->results->each(

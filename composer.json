@@ -2,9 +2,6 @@
     "name": "ascetik/fiberloop",
     "description": "Task loop using PHP Fiber",
     "type": "library",
-    "require-dev": {
-        "phpunit/phpunit": "^10.3"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -25,5 +22,8 @@
     "require": {
         "ascetik/storage": "^0.2.0",
         "ascetik/krono": "^0.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.4"
     }
 }
