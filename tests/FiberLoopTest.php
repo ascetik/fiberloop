@@ -2,9 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace Ascetik\Fiberloop\Tests;
 
+use Ascetik\Fiberloop\Enums\TaskExecutionState;
+use Ascetik\Fiberloop\Errors\Exceptions\TaskExecutionException;
+use Ascetik\Fiberloop\Errors\Exceptions\TaskMaxTriesException;
 use Ascetik\Fiberloop\FiberLoop;
+use Ascetik\Fiberloop\Tests\Fakes\Example;
+use Ascetik\Fiberloop\Tests\Fakes\FakeServiceManager;
+use Ascetik\Fiberloop\ValueObjects\TaskReport;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 include 'tests/Fakes/functions.php';
@@ -56,7 +63,7 @@ class FiberLoopTest extends TestCase
 
     // TODO : tests with turns and maxTries
 
-    public function test_task_maxtries()
+    public function testTaskMaxTries()
     {
         $this->expectException(TaskMaxTriesException::class);
         // $this->expectException(FiberError::class);
@@ -175,7 +182,7 @@ class FiberLoopTest extends TestCase
     {
         $this->loop->defer(
             function () {
-                Fiber::suspend();
+                \Fiber::suspend();
                 return 'test';
             }
         )->identifiedBy('suspended');
@@ -186,8 +193,8 @@ class FiberLoopTest extends TestCase
             ->identifiedBy('sleeping');
 
         $this->loop->run();
-        $sleeping = $this->loop->getEllapsedTimeOf('sleeping');
-        $suspended = $this->loop->getEllapsedTimeOf('suspended') . PHP_EOL;
+        $sleeping = $this->loop->getElapsedTimeOf('sleeping');
+        $suspended = $this->loop->getElapsedTimeOf('suspended') . PHP_EOL;
         $totalTasksTime = $this->loop->getEllapsedTimes();
         $total = $this->loop->totalTime();
         $this->assertSame('1s', $sleeping);
