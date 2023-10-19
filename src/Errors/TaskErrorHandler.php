@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace Ascetik\Fiberloop\Handlers;
+namespace Ascetik\Fiberloop\Errors;
 
 use Ascetik\Fiberloop\FiberLoop;
 
