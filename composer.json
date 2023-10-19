@@ -22,5 +22,8 @@
             "email": "ascetik@free.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "ascetik/storage": "^0.2.0",
+        "ascetik/krono": "^0.2.0"
+    }
 }
