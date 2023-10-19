@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Ascetik\Fiberloop;
 
 use Ascetik\Fiberloop\Containers\TaskReportRegistry;
+use Ascetik\Fiberloop\DTOs\FiberTask;
+use Ascetik\Fiberloop\Handlers\TaskErrorHandler;
 use Ascetik\Krono\Krono;
 use Ascetik\Storage\Box;
 use Throwable;
@@ -43,7 +45,7 @@ class FiberLoop
         $this->results = new Box();
         $this->errors = new Box();
         $this->reports = new TaskReportRegistry();
-        $this->counter = new TimeCounter();
+        $this->counter = new Krono();
         $this->errorHandler = new TaskErrorHandler($this);
     }
 
