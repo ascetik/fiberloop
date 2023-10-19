@@ -17,8 +17,10 @@ namespace Ascetik\Fiberloop\DTOs;
 use Ascetik\Fiberloop\Enums\TaskExecutionState;
 use Ascetik\Fiberloop\Enums\TaskOnExcess;
 use Ascetik\Fiberloop\Enums\TaskRunState;
+use Ascetik\Fiberloop\Types\AbstractErrorHandlingStrategy;
 use Ascetik\Krono\Krono;
 use Fiber;
+use SebastianBergmann\CodeCoverage\Node\AbstractNode;
 
 /**
  * Handle a task using an identifier and a fiber
@@ -91,9 +93,9 @@ final class FiberTask
     /**
      * Strategy to adopt when an error occurs
      *
-     * @var ErrorHandlingStrategy
+     * @var AbstractErrorHandlingStrategy
      */
-    private ErrorHandlingStrategy $taskHandlingStrategy;
+    private AbstractErrorHandlingStrategy $taskHandlingStrategy;
 
     /**
      * Calculate task execution ellapsed time
@@ -111,7 +113,7 @@ final class FiberTask
         $this->fiber = new Fiber($func);
         $this->id = $this->assignId();
         $this->parameters = $parameters;
-        $this->counter = new TimeCounter();
+        $this->counter = new Krono();
         $this->taskHandlingStrategy = new ThrowOnErrorStrategy($this);
     }
 
