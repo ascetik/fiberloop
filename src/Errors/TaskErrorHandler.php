@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Ascetik\Fiberloop\Errors;
 
+use Ascetik\Fiberloop\Errors\Exceptions\TaskExecutionException;
 use Ascetik\Fiberloop\FiberLoop;
 
 
